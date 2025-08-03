@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimum Wp7 - Énergie Solaire au Mali</title>
+    
+    <!-- Preconnect to external domains for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    
+    <!-- Tailwind CSS - Load with defer for better performance -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    
+    <!-- Google Fonts: Inter - Optimized loading -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons - Load with defer -->
+    <script src="https://unpkg.com/lucide-icons@latest/dist/lucide.min.js" defer></script>
+    
+    <!-- AOS Animation Library - Load with defer -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body class="text-slate-700 bg-gradient-to-br from-slate-50 to-slate-100">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-slate-200/50">
+        <nav class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-2 sm:space-x-3 group">
+                <!-- Animated Logo -->
+                <div class="relative">
+                    <svg class="w-8 h-8 sm:w-12 sm:h-12 text-amber-500 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L14.5 9.5H22L16 14L18.5 21.5L12 17L5.5 21.5L8 14L2 9.5H9.5L12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8.82843 15.1716L15.1716 8.82843" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <div class="absolute inset-0 bg-amber-400 rounded-full opacity-0 group-hover:opacity-20 animate-pulse"></div>
+                </div>
+                <div>
+                    <span class="text-lg sm:text-2xl font-black text-slate-800">Optimum</span>
+                    <span class="text-lg sm:text-2xl font-black text-amber-500">Wp7</span>
+                </div>
+            </a>
+            <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                <a href="#about" class="nav-link">À Propos</a>
+                <a href="#services" class="nav-link">Nos Services</a>
+                <a href="#projects" class="nav-link">Nos Projets</a>
+                <a href="#contact" class="btn-primary">Contactez-nous</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-slate-800 hover:text-amber-500 transition-colors">
+                <i data-lucide="menu"></i>
+            </button>
+        </nav>
+         <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-4 sm:px-6 pt-2 pb-4 space-y-2 bg-white/95 backdrop-blur-md">
+            <a href="#about" class="mobile-nav-link">À Propos</a>
+            <a href="#services" class="mobile-nav-link">Nos Services</a>
+            <a href="#projects" class="mobile-nav-link">Nos Projets</a>
+            <a href="#contact" class="mobile-nav-link btn-primary text-center">Contactez-nous</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Dynamic Hero Section -->
+        <section id="hero-slider" class="relative h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh] w-full overflow-hidden">
+            <!-- Slides Container -->
+            <div class="w-full h-full">
+                <!-- Slide 1 -->
+                <div class="hero-slide active">
+                    <img src="panels.png" alt="Panneaux solaires sur un toit" class="w-full h-full object-cover" loading="eager">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-900/60 to-transparent"></div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="hero-slide">
+                    <img src="Enhanced_Panels_Installation.jpg" alt="Champ de panneaux solaires au coucher du soleil" class="w-full h-full object-cover" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-r from-amber-900/60 to-transparent"></div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="hero-slide">
+                    <img src="Panel_with_logo.png" alt="Technicien installant des panneaux solaires" class="w-full h-full object-cover" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-r from-green-900/60 to-transparent"></div>
+                </div>
+            </div>
+            
+            <!-- Overlay Content -->
+            <div class="absolute inset-0 flex items-center justify-center text-white text-center z-10">
+                <div class="container mx-auto px-4 sm:px-6">
+                    <div data-aos="fade-up" data-aos-duration="1000">
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black leading-tight mb-4 sm:mb-6">
+                            L'Avenir est <span class="text-amber-400 drop-shadow-lg">Solaire</span>
+                        </h1>
+                        <p class="text-lg sm:text-xl md:text-2xl max-w-4xl mx-auto mb-6 sm:mb-8 font-light px-4">
+                            « Satisfaire le besoin d'électricité d'aujourd'hui et répondre aux défis énergétiques de demain. »
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
+                            <a href="#services" class="btn-primary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 group">
+                                Découvrez nos solutions
+                                <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                            <a href="#contact" class="btn-secondary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4">
+                                Contactez-nous
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slider Navigation -->
+            <button id="prev-slide" class="slider-nav left-2 sm:left-4"><i data-lucide="chevron-left" class="w-6 h-6 sm:w-8 sm:h-8"></i></button>
+            <button id="next-slide" class="slider-nav right-2 sm:right-4"><i data-lucide="chevron-right" class="w-6 h-6 sm:w-8 sm:h-8"></i></button>
+
+            <!-- Slider Dots -->
+            <div id="slider-dots" class="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex space-x-2 sm:space-x-3"></div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-12 sm:py-16 bg-white">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+                    <div data-aos="fade-up" data-aos-delay="100" class="text-center">
+                        <div class="text-3xl sm:text-4xl md:text-5xl font-black text-amber-500 mb-2">50+</div>
+                        <div class="text-slate-600 font-medium text-sm sm:text-base">Projets Réalisés</div>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="200" class="text-center">
+                        <div class="text-3xl sm:text-4xl md:text-5xl font-black text-amber-500 mb-2">100%</div>
+                        <div class="text-slate-600 font-medium text-sm sm:text-base">Satisfaction Client</div>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="300" class="text-center">
+                        <div class="text-3xl sm:text-4xl md:text-5xl font-black text-amber-500 mb-2">5+</div>
+                        <div class="text-slate-600 font-medium text-sm sm:text-base">Années d'Expérience</div>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="400" class="text-center">
+                        <div class="text-3xl sm:text-4xl md:text-5xl font-black text-amber-500 mb-2">24/7</div>
+                        <div class="text-slate-600 font-medium text-sm sm:text-base">Support Technique</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-slate-50 to-white">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
+                    <h2 class="section-title text-2xl sm:text-3xl md:text-4xl">Qui Sommes-Nous ?</h2>
+                    <p class="section-subtitle text-base sm:text-lg">Votre partenaire de confiance pour une énergie propre et durable.</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-12 sm:gap-16 items-center">
+                    <div data-aos="fade-right">
+                        <div class="bg-gradient-to-br from-amber-500 to-amber-600 text-white p-6 sm:p-8 rounded-2xl mb-6 sm:mb-8">
+                            <h3 class="text-2xl sm:text-3xl font-bold mb-4">Optimum Wp7: L'Énergie Solaire pour l'Afrique</h3>
+                            <p class="text-base sm:text-lg leading-relaxed">Basée à Bamako, au Mali, Optimum Wp7 (Optimum Watt Peak ODD7) est une entreprise pionnière dans le secteur de l'énergie solaire. Notre mission est de fournir des solutions énergétiques fiables, performantes et durables pour les particuliers, les entreprises et les institutions.</p>
+                        </div>
+                        <p class="text-slate-600 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">Forts de notre expertise, nous nous engageons à jouer un rôle clé dans la transition énergétique du Mali et projetons d'étendre notre impact à travers l'Afrique. Nous croyons en un avenir où l'accès à une énergie propre est un droit pour tous.</p>
+                        <a href="#contact" class="btn-primary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 group">
+                            Discutons de votre projet
+                            <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                    <div data-aos="fade-left">
+                        <div class="relative">
+                            <img src="Enhanced_Panels_Installation.jpg" alt="Équipe Optimum Wp7" class="rounded-2xl shadow-2xl w-full" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/600x400/f8fafc/1e293b?text=Image+Indisponible';">
+                            <div class="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 bg-white p-4 sm:p-6 rounded-xl shadow-lg">
+                                <div class="text-2xl sm:text-3xl font-black text-amber-500">25+</div>
+                                <div class="text-slate-600 font-medium text-sm sm:text-base">Années d'expérience combinée</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-16 sm:py-20 lg:py-24 bg-white">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
+                    <h2 class="section-title text-2xl sm:text-3xl md:text-4xl">Nos Expertises</h2>
+                    <p class="section-subtitle text-base sm:text-lg">Des solutions sur-mesure pour tous vos besoins énergétiques.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6 sm:gap-8">
+                    <div class="card p-6 sm:p-8 text-center modal-trigger bg-gradient-to-br from-slate-800 to-slate-900" data-modal="solar-systems" data-aos="fade-up" data-aos-delay="100">
+                        <div class="flex justify-center mb-4 sm:mb-6">
+                            <div class="bg-gradient-to-br from-amber-500 to-amber-600 p-4 sm:p-6 rounded-2xl text-white">
+                                <i data-lucide="solar-panel-2" class="w-8 h-8 sm:w-12 sm:h-12"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Systèmes Solaires Haute Performance</h3>
+                        <p class="text-white/80 mb-4 sm:mb-6 text-sm sm:text-base">Nous concevons et installons des systèmes solaires photovoltaïques à très haute performance, optimisés pour le climat africain. Profitez d'une production maximale et d'une fiabilité à toute épreuve.</p>
+                        <div class="flex items-center justify-center text-amber-500 font-semibold group text-sm sm:text-base">
+                            En savoir plus
+                            <i data-lucide="arrow-right" class="w-3 h-3 sm:w-4 sm:h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                    <div class="card p-6 sm:p-8 text-center modal-trigger bg-gradient-to-br from-slate-800 to-slate-900" data-modal="solar-carports" data-aos="fade-up" data-aos-delay="200">
+                        <div class="flex justify-center mb-4 sm:mb-6">
+                            <div class="bg-gradient-to-br from-green-500 to-green-600 p-4 sm:p-6 rounded-2xl text-white">
+                                <i data-lucide="car-front" class="w-8 h-8 sm:w-12 sm:h-12"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Ombrières Photovoltaïques</h3>
+                        <p class="text-white/80 mb-4 sm:mb-6 text-sm sm:text-base">Transformez vos parkings en centrales électriques. Nos ombrières photovoltaïques protègent vos véhicules tout en produisant de l'énergie verte pour votre entreprise ou votre domicile.</p>
+                        <div class="flex items-center justify-center text-green-500 font-semibold group text-sm sm:text-base">
+                            En savoir plus
+                            <i data-lucide="arrow-right" class="w-3 h-3 sm:w-4 sm:h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-slate-50 to-white">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
+                    <h2 class="section-title text-2xl sm:text-3xl md:text-4xl">Nos Réalisations</h2>
+                    <p class="section-subtitle text-base sm:text-lg">La preuve de notre savoir-faire en images.</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                    <!-- Project 1 -->
+                    <div class="card overflow-hidden group modal-trigger bg-gradient-to-br from-slate-800 to-slate-900" data-modal="residential-project" data-aos="fade-up" data-aos-delay="100" style="display: block !important; opacity: 1 !important; visibility: visible !important;">
+                        <div class="relative overflow-hidden">
+                            <img src="house project.png" alt="Installation solaire résidentielle" class="w-full h-48 sm:h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div class="text-sm font-medium">Voir détails</div>
+                            </div>
+                        </div>
+                        <div class="p-4 sm:p-6">
+                            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Installation Résidentielle</h3>
+                            <p class="text-white/80 text-sm">Système autonome pour une villa à Bamako.</p>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="card overflow-hidden group modal-trigger bg-gradient-to-br from-slate-800 to-slate-900" data-modal="pharmacy-project" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative overflow-hidden">
+                            <img src="pharmacy project.png" alt="Installation pour une pharmacie" class="w-full h-48 sm:h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div class="text-sm font-medium">Voir détails</div>
+                            </div>
+                        </div>
+                         <div class="p-4 sm:p-6">
+                            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Alimentation Pharmacie</h3>
+                            <p class="text-white/80 text-sm">Solution d'alimentation continue pour une pharmacie.</p>
+                        </div>
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="card overflow-hidden group modal-trigger bg-gradient-to-br from-slate-800 to-slate-900" data-modal="industrial-project" data-aos="fade-up" data-aos-delay="300">
+                        <div class="relative overflow-hidden">
+                            <img src="GKS project.png" alt="Installation industrielle" class="w-full h-48 sm:h-64 object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div class="text-sm font-medium">Voir détails</div>
+                            </div>
+                        </div>
+                         <div class="p-4 sm:p-6">
+                            <h3 class="text-lg sm:text-xl font-bold text-white mb-2">Site Industriel</h3>
+                            <p class="text-white/80 text-sm">Centrale solaire pour les besoins d'une usine.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 sm:py-20 lg:py-24 bg-gradient-to-br from-slate-800 to-slate-900 text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
+            <div class="container mx-auto px-4 sm:px-6 relative z-10">
+                <div class="text-center mb-12 sm:mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl sm:text-4xl md:text-5xl font-black mb-4">Contactez-Nous</h2>
+                    <p class="text-lg sm:text-xl text-slate-300">Prêt à passer au solaire ? Parlons-en !</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-12 sm:gap-16">
+                    <!-- Contact Form -->
+                    <div class="bg-white/10 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-white/20" data-aos="fade-right">
+                        <h3 class="text-xl sm:text-2xl font-bold mb-6 sm:mb-8">Envoyez-nous un message</h3>
+                        <form action="#" method="POST" class="space-y-4 sm:space-y-6">
+                            <div>
+                                <label for="name" class="block mb-2 sm:mb-3 font-semibold text-sm sm:text-base">Nom complet</label>
+                                <input type="text" id="name" name="name" class="w-full p-3 sm:p-4 rounded-xl border border-white/20 bg-white/10 text-white placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm sm:text-base" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2 sm:mb-3 font-semibold text-sm sm:text-base">Adresse e-mail</label>
+                                <input type="email" id="email" name="email" class="w-full p-3 sm:p-4 rounded-xl border border-white/20 bg-white/10 text-white placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm sm:text-base" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block mb-2 sm:mb-3 font-semibold text-sm sm:text-base">Votre message</label>
+                                <textarea id="message" name="message" rows="4" class="w-full p-3 sm:p-4 rounded-xl border border-white/20 bg-white/10 text-white placeholder-slate-300 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent text-sm sm:text-base" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full btn-primary text-base sm:text-lg py-3 sm:py-4 group">
+                                Envoyer le message
+                                <i data-lucide="send" class="w-4 h-4 sm:w-5 sm:h-5 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <!-- Contact Info -->
+                    <div class="space-y-4 sm:space-y-6" data-aos="fade-left">
+                        <div>
+                            <h3 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-amber-400">Nos Coordonnées</h3>
+                            <p class="text-base sm:text-lg leading-relaxed text-slate-300">N'hésitez pas à nous appeler, nous envoyer un e-mail, ou nous rendre visite pour discuter de votre projet énergétique.</p>
+                        </div>
+                        <div class="space-y-4 sm:space-y-6">
+                            <div class="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-white/10 rounded-xl backdrop-blur-md">
+                                <div class="bg-amber-500 p-2 sm:p-3 rounded-xl">
+                                    <i data-lucide="mail" class="w-5 h-5 sm:w-6 sm:h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base sm:text-lg">Email</h4>
+                                    <a href="mailto:optimumwp7@gmail.com" class="text-slate-300 hover:text-amber-400 transition-colors text-sm sm:text-base">optimumwp7@gmail.com</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-white/10 rounded-xl backdrop-blur-md">
+                                <div class="bg-amber-500 p-2 sm:p-3 rounded-xl">
+                                    <i data-lucide="phone" class="w-5 h-5 sm:w-6 sm:h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base sm:text-lg">Téléphone</h4>
+                                    <a href="tel:+22399999670" class="text-slate-300 hover:text-amber-400 transition-colors text-sm sm:text-base">+223 99 99 96 70</a>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 bg-white/10 rounded-xl backdrop-blur-md">
+                                <div class="bg-amber-500 p-2 sm:p-3 rounded-xl">
+                                    <i data-lucide="map-pin" class="w-5 h-5 sm:w-6 sm:h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-base sm:text-lg">Adresse</h4>
+                                    <p class="text-slate-300 text-sm sm:text-base">ACI - Hamdallaye, Bamako, Mali</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400">
+        <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
+            <div class="grid md:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8">
+                <div class="md:col-span-2">
+                    <a href="#" class="flex items-center space-x-2 sm:space-x-3 mb-4">
+                        <svg class="w-8 h-8 sm:w-10 sm:h-10 text-amber-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L14.5 9.5H22L16 14L18.5 21.5L12 17L5.5 21.5L8 14L2 9.5H9.5L12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.82843 15.1716L15.1716 8.82843" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <div>
+                            <span class="text-xl sm:text-2xl font-black text-white">Optimum Wp7</span>
+                            <div class="text-sm">Optimum Watt Peak ODD7</div>
+                        </div>
+                    </a>
+                    <p class="text-slate-400 mb-4 text-sm sm:text-base">Votre partenaire de confiance pour une énergie propre et durable au Mali et en Afrique.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-3 sm:mb-4 text-sm sm:text-base">Services</h4>
+                    <ul class="space-y-2 text-sm sm:text-base">
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Systèmes Solaires</a></li>
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Ombrières</a></li>
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Maintenance</a></li>
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Consultation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white mb-3 sm:mb-4 text-sm sm:text-base">Contact</h4>
+                    <ul class="space-y-2 text-sm sm:text-base">
+                        <li><a href="mailto:optimumwp7@gmail.com" class="hover:text-amber-400 transition-colors">Email</a></li>
+                        <li><a href="tel:+22399999670" class="hover:text-amber-400 transition-colors">Téléphone</a></li>
+                        <li><a href="#" class="hover:text-amber-400 transition-colors">Localisation</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-6 sm:pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm sm:text-base">&copy; <span id="year"></span> Optimum Wp7. Tous droits réservés.</p>
+                <div class="flex space-x-4 sm:space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-amber-400 transition-colors"><i data-lucide="facebook"></i></a>
+                    <a href="#" class="hover:text-amber-400 transition-colors"><i data-lucide="linkedin"></i></a>
+                    <a href="#" class="hover:text-amber-400 transition-colors"><i data-lucide="twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button id="modal-close" class="modal-close">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img id="modal-image" src="" alt="" class="modal-image">
+                </div>
+                <div class="modal-text">
+                    <h3 id="modal-title" class="modal-title"></h3>
+                    <p id="modal-description" class="modal-description"></p>
+                    <div id="modal-details" class="modal-details"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Button for Modal -->
+    <button id="test-modal" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; background: red; color: white; padding: 10px; border: none; border-radius: 5px;">Test Modal</button>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
