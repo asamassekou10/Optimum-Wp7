@@ -9,12 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize AOS Animations with better configuration
     if (typeof AOS !== 'undefined') {
         AOS.init({
-            duration: 600,
+            duration: 400, // Faster animations
             easing: 'ease-out',
             once: true,
-            offset: 50,
+            offset: 100,
             delay: 0,
-            disable: 'mobile' // Disable on mobile for better performance
+            disable: window.innerWidth < 768 // Disable on mobile for better performance
         });
         console.log('AOS initialized');
     } else {
@@ -211,9 +211,9 @@ document.addEventListener('DOMContentLoaded', () => {
             details: `
                 <h4 class="font-semibold text-slate-800 mb-2">Spécifications du projet :</h4>
                 <ul class="list-disc list-inside space-y-1">
-                    <li>Puissance installée : 8 kWc</li>
-                    <li>Production annuelle : 12 000 kWh</li>
-                    <li>Batteries de stockage : 10 kWh</li>
+                    <li>Puissance PV installée : 24 kWc</li>
+                    <li>Puissance convertisseur : 10 kWh</li>
+                    <li>Batteries de stockage LFPO4: 12000 kWh</li>
                     <li>Durée d'installation : 3 jours</li>
                     <li>Économies annuelles : 800 000 FCFA</li>
                 </ul>
@@ -224,30 +224,34 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         'pharmacy-project': {
             title: 'Alimentation Continue - Pharmacie',
-            description: 'Solution d\'alimentation électrique continue pour une pharmacie de Bamako, garantissant la conservation des médicaments et la continuité de service même en cas de coupure d\'électricité.',
+            description: 'Solution d\'alimentation électrique continue pour une pharmacie de Mopti, garantissant la conservation des médicaments et la continuité de service même en cas de coupure d\'électricité.',
             image: 'https://placehold.co/800x400/10b981/ffffff?text=Projet+Pharmacie',
             details: `
                 <h4 class="font-semibold text-slate-800 mb-2">Solution mise en place :</h4>
                 <ul class="list-disc list-inside space-y-1">
                     <li>Système hybride solaire-réseau</li>
-                    <li>Puissance : 5 kWc</li>
-                    <li>Batteries de secours : 8 kWh</li>
+                    <li>Puissance PV: 24 kWc</li>
+                    <li>Convertisseur: 12 KVA</li>
+                    <li>Batteries LFPO4 : 40 kWh</li>
                     <li>Autonomie : 12 heures</li>
+                    <li>Production annuelle: 13 000 kWh</li>
                     <li>Monitoring en temps réel</li>
+                    <li>Impact : Zéro interruption de service depuis l'installation, préservation optimale des médicaments.</li>
+                    
                 </ul>
                 <div class="mt-4 p-3 bg-green-50 rounded-lg">
-                    <p class="text-sm"><strong>Impact :</strong> Zéro interruption de service depuis l'installation, préservation optimale des médicaments.</p>
+                    <p class="text-sm"><strong>Résultat :</strong> Autonomie énergétique complète avec retour sur investissement en 4 ans.</p>
                 </div>
             `
         },
         'industrial-project': {
             title: 'Centrale Solaire Industrielle',
-            description: 'Installation d\'une centrale solaire pour alimenter les besoins énergétiques d\'une usine de transformation au Mali. Ce projet démontre notre expertise dans les installations de grande envergure.',
+            description: 'Installation d\'une centrale solaire pour alimenter les besoins énergétiques de GSK Logistics à Senou. Ce projet démontre notre expertise dans les installations de grande envergure.',
             image: 'https://placehold.co/800x400/0ea5e9/ffffff?text=Centrale+Industrielle',
             details: `
                 <h4 class="font-semibold text-slate-800 mb-2">Caractéristiques techniques :</h4>
                 <ul class="list-disc list-inside space-y-1">
-                    <li>Puissance totale : 50 kWc</li>
+                    <li>Puissance totale : 80 kWc</li>
                     <li>Production annuelle : 75 000 kWh</li>
                     <li>Réduction CO2 : 35 tonnes/an</li>
                     <li>Durée d'installation : 2 semaines</li>
@@ -325,52 +329,53 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Test modal functionality
-    const testButton = document.getElementById('test-modal');
-    if (testButton) {
-        testButton.addEventListener('click', () => {
-            console.log('Test button clicked');
-            openModal('solar-systems');
-        });
-    }
+
 
     // --- Performance Optimizations ---
     
-    // Debounced scroll handler for better performance
+    // Optimized scroll handler for better performance
     let scrollTimeout;
-    window.addEventListener('scroll', () => {
-        if (scrollTimeout) {
-            clearTimeout(scrollTimeout);
+    let ticking = false;
+    
+    function updateParallax() {
+        const scrolled = window.pageYOffset;
+        const heroSection = document.getElementById('hero-slider');
+        if (heroSection && window.innerWidth > 768) { // Only on desktop
+            const rate = scrolled * -0.2; // Reduced parallax for better performance
+            heroSection.style.transform = `translateY(${rate}px)`;
         }
-        scrollTimeout = setTimeout(() => {
-            // Parallax effect for hero section
-            const scrolled = window.pageYOffset;
-            const heroSection = document.getElementById('hero-slider');
-            if (heroSection) {
-                const rate = scrolled * -0.3;
-                heroSection.style.transform = `translateY(${rate}px)`;
-            }
-        }, 10);
-    });
+        ticking = false;
+    }
+    
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateParallax);
+            ticking = true;
+        }
+    }, { passive: true });
 
-    // Intersection Observer for better performance
+    // Optimized Intersection Observer for better performance
     const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        rootMargin: '0px 0px -100px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animate-in');
+                // Unobserve after animation to improve performance
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
-    // Observe elements for animation
-    document.querySelectorAll('.card, .section-title, .section-subtitle').forEach(el => {
-        observer.observe(el);
-    });
+    // Observe elements for animation (only on desktop)
+    if (window.innerWidth >= 768) {
+        document.querySelectorAll('.card, .section-title, .section-subtitle').forEach(el => {
+            observer.observe(el);
+        });
+    }
 
     // --- Form Handling ---
     const contactForm = document.querySelector('form');
